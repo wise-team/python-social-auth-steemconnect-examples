@@ -1,24 +1,17 @@
-# Python Social Auth - Examples
+# Python Social Auth SteemConnect - Examples
 
 Python Social Auth is an easy to setup social authentication/registration
-mechanism with support for several frameworks and auth providers.
+mechanism with support for several frameworks and auth providers. 
 
 ## Description
 
-This is a collection of examples implementations of the
-python-social-auth ecosystem functionality.
+Those examples shows how to use [python-social-auth-steemconnect provider](https://github.com/noisy/python-social-auth-steemconnect) with couple different python frameworks.
 
 ## Documentation
 
-Project documentation is available at http://python-social-auth.readthedocs.org/.
-
-## Contributing
+Project of Python Social Auth is available at http://python-social-auth.readthedocs.org/.
 
 See the [CONTRIBUTING.md](CONTRIBUTING.md) document for details.
-
-## Versioning
-
-This project follows [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).
 
 ## License
 
