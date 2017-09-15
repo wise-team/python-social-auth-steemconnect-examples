@@ -1,3 +1,4 @@
--r ../requirements.txt
+social-auth-core[all]
+social-auth-steemconnect
 tornado-jinja2
 social-auth-app-tornado

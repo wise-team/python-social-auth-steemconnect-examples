@@ -43,19 +43,6 @@ def validation_sent(request):
     }
 
 
-@render_to('home.html')
-def require_email(request):
-    """Email required page"""
-    strategy = load_strategy()
-    partial_token = request.GET.get('partial_token')
-    partial = strategy.partial_load(partial_token)
-    return {
-        'email_required': True,
-        'partial_backend_name': partial.backend,
-        'partial_token': partial_token
-    }
-
-
 @psa('social:complete')
 def ajax_auth(request, backend):
     """AJAX authentication endpoint"""
