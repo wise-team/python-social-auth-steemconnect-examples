@@ -1,3 +1,0 @@
--r ../requirements.txt
-flask-script
-social-auth-app-flask-peewee

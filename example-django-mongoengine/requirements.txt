@@ -1,4 +1,0 @@
--r ../requirements.txt
-django
-django-jinja
-social-auth-app-django
