@@ -20,7 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # App
 app = Flask(
     __name__,
-    template_folder=os.path.join(BASE_DIR, 'common', 'templates')
+    template_folder=os.path.join(BASE_DIR, 'common', 'templates'),
+    static_url_path='',
 )
 app.config.from_object('example.settings')
 
@@ -90,6 +91,7 @@ app.context_processor(backends)
 app.jinja_env.filters['backend_name'] = filters.backend_name
 app.jinja_env.filters['backend_class'] = filters.backend_class
 app.jinja_env.filters['icon_name'] = filters.icon_name
+app.jinja_env.filters['order_backends'] = filters.order_backends
 app.jinja_env.filters['social_backends'] = filters.social_backends
 app.jinja_env.filters['legacy_backends'] = filters.legacy_backends
 app.jinja_env.filters['oauth_backends'] = filters.oauth_backends

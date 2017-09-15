@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Python Social Auth - test</title>
+    <title>Python Social Auth</title>
     <link href="{{ STATIC_URL }}fonts/style.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" type="text/css">
@@ -26,10 +26,11 @@
                       action="{{ url("social:disconnect_individual", backend=association.provider, association_id=association.id) }}"
                       method="post">
                   <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                  <a class="login-button button_standard button-{{ name|icon_name }}" title="Disconnect {{ backend|backend_name }}" name="{{ backend|backend_class }}" href="#">
+
+                  <button type="submit" class="login-button button_standard button-{{ name|icon_name }}" title="Disconnect {{ backend|backend_name }}" name="{{ backend|backend_class }}" href="#">
                       <span class="icon icon-{{ name|icon_name }}"></span>
                       Disconnect {{ backend|backend_name }}
-                  </a>
+                  </button>
                 </form>
               {% else %}
                   <a href="{{ url("social:begin", backend=name) }}"
@@ -121,14 +122,5 @@
         </a>
       </div>
     </div>
-
-    <script type="text/javascript">
-      $(function () {
-        $('.disconnect-form').on('click', 'a.btn', function (event) {
-          event.preventDefault();
-          $(event.target).closest('form').submit();
-        });
-      });
-    </script>
   </body>
 </html>

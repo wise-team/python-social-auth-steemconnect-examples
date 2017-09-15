@@ -1,8 +1,9 @@
--r ../requirements.txt
 Flask
 Flask-Login
 Flask-Script
 Werkzeug
 Jinja2
+social-auth-core[all]
 social-auth-app-flask
 social-auth-app-flask-sqlalchemy
+social-auth-steemconnect
