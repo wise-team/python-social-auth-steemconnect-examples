@@ -1,4 +1,5 @@
--r ../requirements.txt
 django
 django-jinja
+social-auth-core[all]
 social-auth-app-django
+social-auth-steemconnect
