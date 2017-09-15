@@ -210,7 +210,7 @@ STATIC_URL = '/static/'
 
 # Additional directories which hold static files
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, "static"),
+    os.path.join(PROJECT_ROOT, "common/static"),
 ]
 
 try:

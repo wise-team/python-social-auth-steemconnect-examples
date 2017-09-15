@@ -10,7 +10,7 @@ def main():
 
 @app.route('/static/<path:path>')
 def send_js(path):
-    return send_from_directory('static', path)
+    return send_from_directory('../common/static', path)
 
 
 @app.route('/done/')

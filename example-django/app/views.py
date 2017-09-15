@@ -32,30 +32,3 @@ def home(request):
 def done(request):
     """Login complete view, displays user data"""
     pass
-
-
-@render_to('home.html')
-def validation_sent(request):
-    """Email validation sent confirmation page"""
-    return {
-        'validation_sent': True,
-        'email': request.session.get('email_validation_address')
-    }
-
-
-@psa('social:complete')
-def ajax_auth(request, backend):
-    """AJAX authentication endpoint"""
-    if isinstance(request.backend, BaseOAuth1):
-        token = {
-            'oauth_token': request.REQUEST.get('access_token'),
-            'oauth_token_secret': request.REQUEST.get('access_token_secret'),
-        }
-    elif isinstance(request.backend, BaseOAuth2):
-        token = request.REQUEST.get('access_token')
-    else:
-        raise HttpResponseBadRequest('Wrong backend type')
-    user = request.backend.do_auth(token, ajax=True)
-    login(request, user)
-    data = {'id': user.id, 'username': user.username}
-    return HttpResponse(json.dumps(data), mimetype='application/json')

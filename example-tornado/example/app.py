@@ -94,6 +94,6 @@ application = tornado.web.Application(SOCIAL_AUTH_ROUTES + [
     (r'/', MainHandler),
     (r'/done/', DoneHandler),
     (r'/logout/', LogoutHandler),
-    (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': 'static'}),
+    (r'/static/(.*)', tornado.web.StaticFileHandler, {'path': 'common/static'}),
 ], cookie_secret='adb528da-20bb-4386-8eaf-09f041b569e0',
    **tornado_settings)
