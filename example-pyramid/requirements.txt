@@ -1,5 +1,6 @@
--r ../requirements.txt
+social-auth-core[all]
 social-auth-app-pyramid
+social-auth-steemconnect
 transaction
 waitress
 pyramid

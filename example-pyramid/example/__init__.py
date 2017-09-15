@@ -11,8 +11,8 @@ from common import filters, utils
 
 from .models import DBSession, Base
 
-import settings as app_settings
-import local_settings as app_local_settings
+from . import settings as app_settings
+from . import local_settings as app_local_settings
 
 
 def get_settings(module):
@@ -38,7 +38,8 @@ def main(global_config, **settings):
         'legacy_backends': filters.legacy_backends,
         'oauth_backends': filters.oauth_backends,
         'filter_backends': filters.filter_backends,
-        'slice_by': filters.slice_by
+        'slice_by': filters.slice_by,
+        'order_backends': filters.order_backends,
     }
     config = Configurator(settings=settings,
                           session_factory=session_factory,
