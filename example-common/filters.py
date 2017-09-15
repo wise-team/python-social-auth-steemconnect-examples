@@ -10,10 +10,11 @@ LEGACY_NAMES = ['username', 'email']
 
 def backend_name(backend):
     name = backend.__name__
-    name = name.replace('OAuth', ' OAuth')
-    name = name.replace('OpenId', ' OpenId')
-    name = name.replace('Sandbox', '')
-    name = NAME_RE.sub(r'\1 Auth', name)
+    name = name.replace('OAuth2', '')
+    name = name.replace('OAuth', '')
+    # name = name.replace('OpenId', ' OpenId')
+    # name = name.replace('Sandbox', '')
+    # name = NAME_RE.sub(r'\1 Auth', name)
     return name
 
 
@@ -21,8 +22,22 @@ def backend_class(backend):
     return backend.name.replace('-', ' ')
 
 
+def order_backends(backends):
+    order = {
+        'steemconnect': 0,
+        'facebook': 1,
+        'github': 2,
+        'twitter': 3,
+        'google-oauth2': 4,
+    }
+    backends = list(backends)
+    backends.sort(key=lambda backend: order[backend[0]])
+    return backends
+
+
 def icon_name(name):
     return {
+        'steemconnect': 'steem',
         'stackoverflow': 'stack-overflow',
         'google-oauth': 'google',
         'google-oauth2': 'google',
@@ -40,6 +55,7 @@ def icon_name(name):
 
 def slice_by(value, items):
     return [value[n:n + items] for n in range(0, len(value), items)]
+
 
 def social_backends(backends):
     return filter_backends(

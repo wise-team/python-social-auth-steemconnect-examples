@@ -26,10 +26,23 @@ def backend_name(backend):
 def backend_class(backend):
     return backend.name.replace('-', ' ')
 
+@register.filter
+def order_backends(backends):
+    order = {
+        'steemconnect': 0,
+        'facebook': 1,
+        'github': 2,
+        'twitter': 3,
+        'google-oauth2': 4,
+    }
+    backends = list(backends)
+    backends.sort(key=lambda backend: order[backend[0]])
+    return backends
 
 @register.filter
 def icon_name(name):
     return {
+        'steemconnect': 'steem',
         'stackoverflow': 'stack-overflow',
         'google-oauth': 'google',
         'google-oauth2': 'google',

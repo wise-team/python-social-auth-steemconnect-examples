@@ -72,7 +72,8 @@ TEMPLATES = [
                 'legacy_backends': 'common.filters.legacy_backends',
                 'oauth_backends': 'common.filters.oauth_backends',
                 'filter_backends': 'common.filters.filter_backends',
-                'slice_by': 'common.filters.slice_by'
+                'slice_by': 'common.filters.slice_by',
+                'order_backends': 'common.filters.order_backends'
             },
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -80,6 +81,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
+                'django.template.context_processors.static',
             ],
         }
     },
@@ -105,6 +107,10 @@ WSGI_APPLICATION = 'example.wsgi.application'
 
 AUTHENTICATION_BACKENDS = (
     'steemconnect.backends.SteemConnectOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -191,11 +197,21 @@ USE_L10N = True
 
 USE_TZ = True
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+# Absolute path to the directory that holds static files like app media.
+# Example: "/home/media/media.lawrence.com/apps/"
+STATIC_ROOT = os.path.join(PROJECT_ROOT, "collected_static")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Additional directories which hold static files
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, "static"),
+]
 
 try:
     from example.local_settings import *
