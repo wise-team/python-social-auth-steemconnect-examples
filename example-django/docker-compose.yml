@@ -1,0 +1,15 @@
+version: '2'
+
+networks:
+  gallifrey:
+    external: true
+
+services:
+  django:
+    build: .
+    user: django
+    ports:
+      - "5000"
+    command: /start.sh
+    networks:
+      - gallifrey
