@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Python Social Auth</title>
+    <link href="{{ STATIC_URL }}fonts/style.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" type="text/css">
+  </head>
+  <body>
+    <div class="wrapper">
+        <div class="container">
+            <h1>Python Social Auth</h1>
+
+            {% if user.is_authenticated %}
+                <div class="user-details">
+                    You are logged in as <code>{{ user.username }}</code>!
+                    <a href="/logout/" id="logout">Logout</a>
+                </div>
+            {% endif %}
+
+            {% for name, backend in available_backends|social_backends|order_backends %}
+              {% set association = associated.get(name) %}
+              {% if association %}
+                  <form id="{{ name }}-disconnect"
+                      class="disconnect-form col-md-2"
+                      action="{{ url("social:disconnect_individual", backend=association.provider, association_id=association.id) }}"
+                      method="post">
+                  <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+                  <button type="submit" class="login-button button_standard button-{{ name|icon_name }}" title="Disconnect {{ backend|backend_name }}" name="{{ backend|backend_class }}" href="#">
+                      <span class="icon icon-{{ name|icon_name }}"></span>
+                      Disconnect {{ backend|backend_name }}
+                  </button>
+                </form>
+              {% else %}
+                  <a href="{{ url("social:begin", backend=name) }}"
+                     class="login-button button_standard button-{{ name|icon_name }}"
+                     title="Log in with {{ backend|backend_name }}">
+                        <span class="icon icon-{{ name|icon_name }}"></span>
+                      Log in with {{ backend|backend_name }}
+                  </a>
+              {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+  </body>
+</html>
