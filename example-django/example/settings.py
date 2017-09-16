@@ -144,6 +144,14 @@ SOCIAL_AUTH_GITHUB_KEY = os.environ.get('GITHUB_KEY')
 SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('GITHUB_SECRET')
 SOCIAL_AUTH_GITHUB_SCOPE = []
 
+SOCIAL_AUTH_TWITTER_KEY = os.environ.get('TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = os.environ.get('TWITTER_SECRET')
+SOCIAL_AUTH_TWITTER_SCOPE = []
+
+SOCIAL_AUTH_GOOGLE_KEY = os.environ.get('GOOGLE_KEY')
+SOCIAL_AUTH_GOOGLE_SECRET = os.environ.get('GOOGLE_SECRET')
+SOCIAL_AUTH_GOOGLE_SCOPE = []
+
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
