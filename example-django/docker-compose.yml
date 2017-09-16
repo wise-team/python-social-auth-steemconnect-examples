@@ -11,5 +11,6 @@ services:
     ports:
       - "5000"
     command: /start.sh
+    env_file: .env
     networks:
       - gallifrey
