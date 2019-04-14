@@ -23,7 +23,7 @@ def logout(request):
 @render_to('home.html')
 def home(request):
     """Home view, displays login mechanism"""
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('done')
 
 
