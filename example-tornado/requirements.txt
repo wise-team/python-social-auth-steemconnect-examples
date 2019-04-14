@@ -1,4 +1,4 @@
-social-auth-core[all]
-social-auth-steemconnect
-tornado-jinja2
-social-auth-app-tornado
+social-auth-core[all]==3.1.0
+social-auth-steemconnect==0.0.3
+tornado-jinja2==0.2.4
+social-auth-app-tornado==1.0.0
