@@ -1,7 +1,7 @@
 Flask==1.0.2
 Flask-Login==0.4.1
 Flask-Script==2.0.6
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 Jinja2==2.10.1
 social-auth-core[all]==3.1.0
 social-auth-app-flask==1.0.0
